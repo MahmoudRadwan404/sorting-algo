@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+#include <vector>
+#define big 1e9
+using namespace std;
+#define ll long long
+#define ld long double
+long long ar[20000];
+void insertion(int n){
+    for(int i=1; i<n; i++){
+        int currant=ar[i], j=i-1;
+        while(j>=0 && ar[j]>currant){
+            ar[j+1]=ar[j];
+            j--;
+        }
+        ar[j+1]=currant;
+    }
+
+
+}
+int main() {
+cout<<"ENTER ARRAY SIZE"<<endl;
+int n;
+cin>>n;
+cout<<"ENTER YOUR NUMBERS"<<endl;
+for(int i=0;i<n;i++)
+    cin>>ar[i];
+  insertion(n);
+    for(int i=0;i<n;i++)
+        cout<<ar[i]<<" ";
+}

@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+#include <vector>
+#define big 1e9
+using namespace std;
+#define ll long long
+#define ld long double
+long long ar[20000];
+void sort_merge(int l,int r){
+    int mid=(l+r)/2;
+vector<int>L,R;
+for(int i=l;i<=mid;i++)
+    L.push_back(ar[i]);
+    for(int i=mid+1;i<=r;i++)
+        R.push_back(ar[i]);
+    L.push_back(big);
+    R.push_back(big);
+    int lo=0,hi=0;
+    for(int i=l;i<=r;i++){
+        if(L[lo]<R[hi])
+            ar[i]=L[lo++];
+        else ar[i]=R[hi++];
+    }
+
+}
+void merge(int l,int r){
+    if(l==r)
+        return;
+int mid=(l+r)/2;
+    merge(l,mid);
+    merge(mid+1,r);
+    sort_merge(l,r);
+}
+int main() {
+cout<<"ENTER ARRAY SIZE"<<endl;
+int n;
+cin>>n;
+cout<<"ENTER YOUR NUMBERS"<<endl;
+for(int i=0;i<n;i++)
+    cin>>ar[i];
+    merge(0,n-1);
+    for(int i=0;i<n;i++)
+        cout<<ar[i]<<" ";
+}
